@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="LA MAISON NOMADE — Abidjan. Marque de vêtements inspirée de l'héritage africain. Bienvenue chez les Nomades.">
+<title>LA MAISON NOMADE — ABIDJAN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ================= TOKENS ================= */
+:root{
+  --noir:#1A1A1A; --blanc:#FFFFFF;
+  --gris-carte:#EAEAEA; --gris-bord:#E4E4E4; --gris-txt:#8A8A8A; --gris-clair:#C6C6C6;
+  --marge-g:5.7vw; --marge-d:5.6vw;
+  --hdr-h:clamp(56px,7.1vw,84px);
+  --font-titre:'Syncopate',sans-serif;
+  --font-txt:'Inter',sans-serif;
+  --hero-text:#FFFFFF;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-txt);color:var(--noir);background:var(--blanc);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{font-family:inherit;background:none;border:none;cursor:pointer;color:inherit}
+img{display:block}
+:focus-visible{outline:2px solid var(--noir);outline-offset:3px}
+main{padding-top:var(--hdr-h)}
+.skip{position:fixed;top:-52px;left:12px;background:var(--noir);color:#fff;padding:10px 18px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;z-index:500;transition:top .3s}
+.skip:focus{top:0}
+
+/* ================= BOUTONS PILULE ================= */
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:.6em;border-radius:9999px;font-family:var(--font-txt);font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:clamp(10px,1.5vw,14px);cursor:pointer;transition:background .3s,color .3s,border-color .3s;white-space:nowrap}
+.pill-solid{background:var(--noir);color:#fff;border:1px solid var(--noir)}
+.pill-solid:hover{background:#000}
+.pill-outline{background:var(--blanc);color:var(--noir);border:1px solid var(--noir)}
+.pill-outline:hover{background:var(--noir);color:#fff}
+.pill-lg{width:16.8vw;min-width:120px;height:7.1vw;min-height:51px}
+.pill svg{width:1.2em;height:1.2em;flex:none}
+
+/* ================= HEADER ================= */
+.hdr{position:fixed;top:0;left:0;right:0;height:var(--hdr-h);background:var(--blanc);border-bottom:1px solid var(--gris-bord);z-index:100;display:flex;align-items:center}
+.hdr-logo{position:absolute;left:var(--marge-g);top:50%;transform:translateY(-50%);font-family:var(--font-titre);font-weight:700;font-size:clamp(14px,1.9vw,24px);letter-spacing:.02em;line-height:1;z-index:2}
+.hdr-nav{position:absolute;left:31vw;top:0;height:100%;width:38vw;display:flex}
+.nav-cell{width:9vw;height:100%;display:flex;align-items:center;justify-content:center;font-size:clamp(9px,1.1vw,13px);letter-spacing:.04em;text-transform:uppercase;border-left:1px solid var(--gris-bord);position:relative}
+.nav-cell:last-child{border-right:1px solid var(--gris-bord);flex:1}
+.nav-link{position:relative;display:flex;align-items:center;gap:.35vw;height:100%}
+.nav-link::after{content:"";position:absolute;left:0;right:0;bottom:calc(50% - 1.5em);height:1px;background:var(--noir);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.nav-cell:hover .nav-link::after,.nav-drop.open .nav-link::after{transform:scaleX(1)}
+.nav-drop-btn{width:100%;height:100%;display:flex;align-items:center;justify-content:center;gap:.4vw;font-size:clamp(9px,1.1vw,13px);letter-spacing:.04em;text-transform:uppercase}
+.nav-drop-btn svg{width:clamp(7px,.7vw,10px);transition:transform .3s}
+.nav-drop:hover .nav-drop-btn svg,.nav-drop.open .nav-drop-btn svg{transform:rotate(180deg)}
+.drop{position:absolute;top:100%;left:0;width:100%;background:var(--blanc);border:1px solid var(--gris-bord);border-top:none;display:none;flex-direction:column;z-index:5}
+.nav-drop:hover .drop,.nav-drop.open .drop{display:flex}
+.drop a{padding:.95em 1em;font-size:clamp(9px,.95vw,12px);letter-spacing:.04em;text-transform:uppercase;border-bottom:1px solid var(--gris-bord);transition:background .3s}
+.drop a:last-child{border-bottom:none}
+.drop a:hover{background:#F5F5F5}
+.hdr-search{position:absolute;left:77vw;top:0;height:100%;display:flex;align-items:center;gap:.7vw;cursor:text}
+.hdr-search>svg{width:clamp(14px,1.6vw,22px);flex:none}
+.hdr-search input{width:11vw;min-width:80px;border:none;background:transparent;font-family:var(--font-txt);font-size:clamp(8px,.85vw,11px);letter-spacing:.03em;color:var(--noir)}
+.hdr-search input::placeholder{color:var(--gris-clair)}
+.hdr-search input:focus{outline:none}
+.hdr-vsep{position:absolute;left:88.1vw;top:0;width:1px;height:100%;background:var(--gris-bord)}
+.hdr-heart{position:absolute;left:89vw;top:0;height:100%;display:flex;align-items:center}
+.hdr-heart svg{width:clamp(16px,1.8vw,26px)}
+.hdr-heart .dot{position:absolute;top:calc(50% - 1.35vw);right:calc(50% - 1.55vw);width:6px;height:6px;border-radius:50%;background:var(--noir);opacity:0;transition:opacity .3s}
+.hdr-heart.has .dot{opacity:1}
+.hdr-cart{position:absolute;right:0;top:0;height:100%;width:clamp(48px,7vw,84px);background:var(--noir);color:#fff;display:flex;align-items:center;justify-content:center;transition:background .3s}
+.hdr-cart:hover{background:#000}
+.hdr-cart:focus-visible{outline:2px solid var(--blanc);outline-offset:-6px}
+.hdr-cart svg{width:clamp(18px,2vw,28px)}
+.cart-ic{position:relative;display:flex}
+.cart-count{position:absolute;top:-5px;right:-8px;min-width:15px;height:15px;padding:0 4px;border-radius:9999px;background:#fff;color:var(--noir);font-size:9px;font-weight:600;display:none;align-items:center;justify-content:center}
+.cart-count.pop{animation:pop .35s ease}
+@keyframes pop{50%{transform:scale(1.3)}}
+.hdr-burger{display:none}
+@media(max-width:899px){.hdr-search input{display:none}}
+@media(max-width:639px){
+  .hdr-nav,.hdr-vsep{display:none}
+  .hdr-burger{display:flex;align-items:center;margin-left:4.5vw}
+  .hdr-burger svg{width:22px}
+  .hdr-logo{position:static;transform:none;margin-left:5vw;flex:1}
+  .hdr-search{position:static;margin-right:5vw}
+  .hdr-heart{position:static;margin-right:5vw}
+  .hdr-heart .dot{top:-2px;right:-6px}
+  .hdr-cart{position:static;width:clamp(48px,13vw,60px)}
+}
+
+/* ================= HÉROS ================= */
+.hero{position:relative;width:100%;height:57.6vw;min-height:70vh;max-height:100vh;background:var(--gris-carte);overflow:hidden;color:var(--hero-text)}
+.hero-poster,.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%}
+.hero-shade{position:absolute;inset:0;background:rgba(0,0,0,.2)}
+.hero-title{position:absolute;top:49%;left:0;width:100%;font-family:var(--font-titre);font-weight:700;font-size:clamp(32px,7vw,110px);line-height:1.05;text-transform:uppercase}
+.hero-title .l1{display:block;padding-left:8.8vw}
+.hero-title .l2{display:block;padding-left:5.7vw}
+.hero-sub{position:absolute;top:76%;left:var(--marge-g);font-size:clamp(10px,1.25vw,15px);line-height:1.3;letter-spacing:.04em;font-weight:400}
+.hero-cta{position:absolute;top:68%;right:var(--marge-d)}
+@media(max-width:639px){
+  .hero{height:auto;aspect-ratio:4/5;min-height:0;max-height:none}
+  .hero-title{font-size:12vw;top:44%}
+  .hero-sub{top:auto;bottom:26vw}
+  .hero-cta{top:auto;bottom:8vw;right:auto;left:50%;transform:translateX(-50%);width:62vw;height:12.5vw;min-height:48px}
+}
+
+/* ================= CATÉGORIES ================= */
+.cats{position:relative;display:grid;grid-template-columns:1fr 1fr;height:57.3vw}
+.cat{position:relative;overflow:hidden;background:#DBDBDB}
+.cat-right{background:#E2E2E2}
+.cat img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.cat:hover img{transform:scale(1.03)}
+.cat-cover{position:absolute;inset:0;z-index:1}
+.cat-list{position:absolute;top:4.3vw;left:var(--marge-g);z-index:2;color:#fff;font-size:clamp(9px,1.3vw,13px);line-height:2.2vw;letter-spacing:.08em;text-transform:uppercase;font-weight:400}
+.cat-list a{opacity:.9;transition:opacity .3s}
+.cat-list a:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
+.cat-list .strong{font-weight:700;opacity:1}
+.cat-list-right{left:auto;right:var(--marge-d);text-align:right;opacity:.7}
+.cats-title{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);z-index:3;text-align:center;color:#fff;pointer-events:none}
+.cats-title h2{font-family:var(--font-titre);font-weight:700;font-size:clamp(18px,3.8vw,56px);line-height:1.05;text-transform:uppercase;white-space:nowrap}
+.cats-title span{display:block;margin-top:clamp(12px,3.6vw,44px);font-size:clamp(8px,.9vw,11px);letter-spacing:.2em;font-weight:400}
+@media(max-width:639px){
+  .cats{display:block;height:auto}
+  .cat{height:60vh}
+  .cat-list{top:5vw;line-height:2.15em}
+  .cats-title{top:60vh;width:92vw}
+  .cats-title h2{white-space:normal;font-size:clamp(20px,7.4vw,32px)}
+  .cats-title span{margin-top:4.5vw}
+}
+
+/* ================= BEST-SELLERS ================= */
+.bs{padding-bottom:clamp(48px,7vw,110px)}
+.bs-head{height:19.4vw;padding:0 var(--marge-d) 0 var(--marge-g);display:flex;align-items:center;justify-content:space-between;gap:3vw}
+.bs-head h2{font-family:var(--font-titre);font-weight:700;font-size:clamp(20px,3.9vw,56px);line-height:1.05;text-transform:uppercase}
+.bs-wrap{position:relative;margin-top:3.6vw}
+.bs-track{display:flex;gap:.7vw;margin:0 var(--marge-d) 0 var(--marge-g);overflow-x:auto;scrollbar-width:none}
+.bs-track::-webkit-scrollbar{display:none}
+.pcard{flex:0 0 21.7vw;display:block}
+.pcard-img{height:32.2vw;background:var(--gris-carte);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.pcard-img img{width:65%;height:100%;object-fit:contain;transition:transform .6s ease}
+.pcard:hover .pcard-img img{transform:scale(1.04)}
+.pcard-meta{margin-top:1.9vw;display:flex;justify-content:space-between;gap:1em;font-size:clamp(9px,1.25vw,13px);letter-spacing:.04em}
+.pcard-name{font-weight:700;text-transform:uppercase}
+.pcard-price{font-weight:400;text-align:right}
+.bs-arrow{position:absolute;top:16.1vw;transform:translateY(-50%);display:flex;align-items:center;justify-content:center;transition:opacity .3s;z-index:2}
+.bs-arrow svg{width:clamp(18px,1.4vw,24px);height:clamp(28px,2.2vw,38px)}
+.bs-prev{left:2.8vw}
+.bs-next{right:3.2vw}
+.bs-arrow.dim{opacity:.22;pointer-events:none}
+@media(max-width:639px){
+  .bs-head{height:auto;padding-top:12vw;flex-direction:column;align-items:flex-start;gap:5.5vw}
+  .bs-head h2{font-size:clamp(24px,8vw,40px)}
+  .bs-head .pill{width:44vw;min-width:0;height:11.5vw;min-height:44px}
+  .bs-wrap{margin-top:7vw}
+  .bs-track{gap:2vw;scroll-snap-type:x mandatory}
+  .pcard{flex:0 0 43vw;scroll-snap-align:start}
+  .pcard-img{height:auto;aspect-ratio:2/3}
+  .pcard-img img{width:82%}
+  .pcard-meta{font-size:10px;margin-top:3vw}
+  .bs-arrow{display:none}
+}
+
+/* ================= GRILLE CATALOGUE & PAGES ================= */
+.page{padding:clamp(24px,3.5vw,64px) var(--marge-d) clamp(48px,6.5vw,110px) var(--marge-g)}
+.crumb{font-size:clamp(9px,.95vw,12px);letter-spacing:.14em;text-transform:uppercase;color:var(--gris-txt);margin-bottom:clamp(10px,1.4vw,24px)}
+.crumb a:hover{text-decoration:underline}
+.chead h1{font-family:var(--font-titre);font-weight:700;font-size:clamp(26px,4.5vw,72px);line-height:1.05;text-transform:uppercase}
+.chead-row{display:flex;justify-content:space-between;align-items:flex-end;gap:3vw;flex-wrap:wrap;margin-top:clamp(16px,2.4vw,40px)}
+.tabs,.sorter{display:flex;gap:clamp(14px,2vw,32px)}
+.tab{font-size:clamp(10px,1.05vw,13px);letter-spacing:.04em;text-transform:uppercase;color:var(--gris-txt);padding-bottom:5px;border-bottom:1px solid transparent;transition:color .3s,border-color .3s}
+.tab:hover{color:var(--noir)}
+.tab.on{color:var(--noir);border-color:var(--noir)}
+.qchip{display:inline-flex;align-items:center;gap:10px;margin-top:clamp(12px,1.6vw,26px);font-size:clamp(9px,.95vw,12px);letter-spacing:.06em;text-transform:uppercase;color:var(--gris-txt)}
+.qchip button{display:flex}
+.qchip svg{width:12px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.7vw;margin-top:clamp(24px,3.4vw,56px)}
+.grid .pcard{flex:none}
+.grid .pcard-img{height:auto;aspect-ratio:2/3}
+.gempty{grid-column:1/-1;padding:8vw 0;text-align:center;color:var(--gris-txt);font-size:clamp(10px,1vw,13px);letter-spacing:.08em;text-transform:uppercase}
+@media(max-width:639px){
+  .grid{grid-template-columns:repeat(2,1fr);gap:2vw}
+  .pcard-meta{font-size:10px;margin-top:2.5vw}
+  .chead-row{align-items:flex-start;flex-direction:column;gap:4vw}
+}
+
+/* ================= PAGE PRODUIT ================= */
+.pdp{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(24px,4.5vw,80px);padding:clamp(20px,3vw,48px) var(--marge-d) clamp(48px,6vw,100px) var(--marge-g)}
+.pdp-main{background:var(--gris-carte);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.pdp-main img{width:85%;height:100%;object-fit:contain}
+.pdp-main video{width:100%;height:100%;object-fit:cover}
+.pdp-thumbs{display:flex;gap:.7vw;margin-top:.7vw}
+.pdp-thumb{width:clamp(56px,7vw,96px);aspect-ratio:1;background:var(--gris-carte);display:flex;align-items:center;justify-content:center;position:relative;border:1px solid transparent;transition:border-color .3s;padding:0}
+.pdp-thumb.active{border-color:var(--noir)}
+.pdp-thumb img{width:75%;height:75%;object-fit:contain}
+.pdp-thumb .tplay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.06)}
+.pdp-thumb .tplay svg{width:20px;color:var(--noir)}
+.pdp-titlerow{display:flex;align-items:flex-start;justify-content:space-between;gap:2vw}
+.pdp-info h1{font-family:var(--font-titre);font-weight:700;font-size:clamp(24px,2.8vw,46px);line-height:1.05;text-transform:uppercase}
+.pdp-fav{margin-top:.4em}
+.pdp-fav svg{width:clamp(22px,1.9vw,28px)}
+.pdp-fav.has svg{fill:var(--noir)}
+.pdp-price{margin-top:1.2em;font-size:clamp(12px,1.4vw,18px);letter-spacing:.04em}
+.pdp-desc{margin-top:1.6em;color:var(--gris-txt);font-size:clamp(11px,1.15vw,14px);line-height:1.75;max-width:56ch}
+.pdp-label{margin-top:2.4em;font-size:clamp(9px,.95vw,12px);letter-spacing:.14em;color:var(--gris-txt);text-transform:uppercase}
+.pdp-sizes{display:flex;gap:.7vw;margin-top:1em;flex-wrap:wrap}
+.size{min-width:clamp(40px,3.4vw,54px);height:clamp(40px,3.4vw,54px);display:flex;align-items:center;justify-content:center;border:1px solid #D8D8D8;font-size:clamp(10px,1.05vw,13px);letter-spacing:.04em;transition:background .3s,color .3s,border-color .3s}
+.size:hover{border-color:var(--noir)}
+.size.sel{background:var(--noir);color:#fff;border-color:var(--noir)}
+.pdp-row{display:flex;gap:1vw;margin-top:2.2em;align-items:stretch;flex-wrap:wrap}
+.qty{display:flex;align-items:center;border:1px solid var(--gris-bord)}
+.qty button{width:clamp(38px,3.2vw,50px);height:clamp(48px,5vw,72px);font-size:16px}
+.qty span{min-width:2.4em;text-align:center;font-size:clamp(11px,1.05vw,13px)}
+.pdp-add{flex:1;height:clamp(51px,7.1vw,92px)}
+.pdp-note{margin-top:1.6em;font-size:clamp(9px,.95vw,12px);color:var(--gris-txt);letter-spacing:.04em;text-transform:uppercase}
+.pdp-note a{text-decoration:underline;text-underline-offset:3px}
+@keyframes flash{0%,100%{opacity:1}50%{opacity:.25}}
+.flash{animation:flash .55s ease 1}
+@media(max-width:639px){
+  .pdp{grid-template-columns:1fr;gap:7vw}
+  .pdp-main{aspect-ratio:4/5}
+  .pdp-main img{width:80%}
+  .pdp-add{width:100%;flex:none;height:12.5vw;min-height:48px}
+}
+
+/* ================= PAGES ÉDITORIALES ================= */
+.brand-giant{font-family:var(--font-titre);font-weight:700;font-size:clamp(26px,5.6vw,96px);line-height:1.05;text-transform:uppercase}
+.brand-lede{margin-top:clamp(20px,2.6vw,44px);font-size:clamp(12px,1.35vw,17px);line-height:1.75;max-width:62ch}
+.brand-lede strong{font-weight:600}
+.brand-lines{margin-top:clamp(36px,4.5vw,80px)}
+.bline{display:grid;grid-template-columns:8vw 22vw 1fr;gap:2vw;padding:clamp(20px,2.6vw,44px) 0;border-top:1px solid var(--gris-bord);align-items:baseline}
+.bnum{font-size:clamp(10px,1.05vw,13px);color:var(--gris-txt);letter-spacing:.1em}
+.bline h3{font-family:var(--font-titre);font-weight:700;font-size:clamp(15px,1.8vw,28px);text-transform:uppercase;line-height:1.1}
+.bline p{color:var(--gris-txt);font-size:clamp(11px,1.1vw,14px);line-height:1.75;max-width:60ch}
+.brand-cta{margin-top:clamp(36px,4.5vw,80px)}
+@media(max-width:639px){
+  .bline{grid-template-columns:14vw 1fr;grid-template-rows:auto auto}
+  .bline p{grid-column:2}
+}
+.contact-list{margin-top:clamp(24px,3vw,52px);display:flex;gap:clamp(24px,6vw,110px);flex-wrap:wrap}
+.contact-list .fcol a{display:flex;align-items:center;gap:.7em}
+.contact-list svg{width:15px}
+.page .pill-lg{margin-top:clamp(28px,3.5vw,60px);width:auto;padding:0 2.6em;height:clamp(51px,5.4vw,72px)}
+.ttable{margin-top:1.6em;border-collapse:collapse;max-width:560px;width:100%}
+.ttable th,.ttable td{border:1px solid var(--gris-bord);padding:.9em 1.2em;font-size:clamp(10px,1vw,13px);letter-spacing:.04em;text-align:left}
+.ttable th{text-transform:uppercase;letter-spacing:.1em;color:var(--gris-txt);font-weight:500}
+.tnote{margin-top:1.4em;color:var(--gris-txt);font-size:clamp(10px,1vw,13px)}
+.svc-body p{margin-top:1.2em;font-size:clamp(12px,1.25vw,15px);line-height:1.75;max-width:62ch}
+
+/* ================= TIROIRS / OVERLAYS ================= */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:opacity .3s;z-index:190}
+.overlay.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,94vw);background:var(--blanc);border-left:1px solid var(--gris-bord);z-index:200;transform:translateX(102%);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column}
+.drawer.open{transform:none}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid var(--gris-bord)}
+.drawer-head h2{font-family:var(--font-titre);font-weight:700;font-size:14px;letter-spacing:.05em;text-transform:uppercase}
+.drawer-body{flex:1;overflow-y:auto;padding:4px 24px}
+.drawer-foot{border-top:1px solid var(--gris-bord);padding:20px 24px;display:flex;flex-direction:column;gap:14px}
+.d-total{display:flex;justify-content:space-between;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.d-wa{width:100%;height:54px}
+.d-note{font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--gris-txt);text-align:center}
+.citem{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--gris-bord)}
+.citem-img{width:72px;height:88px;background:var(--gris-carte);flex:none;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.citem-img img{width:80%;height:80%;object-fit:contain}
+.citem-info{flex:1;min-width:0}
+.citem-name{font-weight:700;font-size:11px;letter-spacing:.05em;text-transform:uppercase}
+.citem-size{font-size:10px;color:var(--gris-txt);margin-top:5px;letter-spacing:.04em}
+.citem-qty{display:inline-flex;align-items:center;border:1px solid var(--gris-bord);margin-top:10px}
+.citem-qty button{width:26px;height:26px;font-size:13px}
+.citem-qty span{min-width:28px;text-align:center;font-size:11px}
+.citem-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;flex:none}
+.citem-price{font-size:11px;white-space:nowrap;margin-bottom:6px}
+.citem-del{display:flex;color:var(--gris-txt);transition:color .3s}
+.citem-del:hover{color:var(--noir)}
+.citem-del svg{width:14px}
+.empty{padding:48px 0;text-align:center;color:var(--gris-txt);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.fav-hint{padding:24px 0;color:var(--gris-txt);font-size:10px;letter-spacing:.06em;text-transform:uppercase}
+
+/* Recherche plein écran */
+.srch{position:fixed;inset:0;background:var(--blanc);z-index:220;transform:translateY(-102%);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column}
+.srch.open{transform:none}
+.srch-head{display:flex;align-items:center;justify-content:space-between;padding:18px clamp(16px,4vw,40px);border-bottom:1px solid var(--gris-bord);height:var(--hdr-h)}
+.srch-logo{font-family:var(--font-titre);font-weight:700;font-size:clamp(14px,1.9vw,22px)}
+.srch-box{margin:clamp(24px,6vh,60px) clamp(16px,10vw,220px) 0;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--noir);padding-bottom:14px}
+.srch-box svg{width:20px;flex:none}
+.srch-box input{flex:1;border:none;font-family:var(--font-txt);font-size:clamp(16px,3.5vw,22px);text-transform:uppercase;letter-spacing:.04em}
+.srch-box input:focus{outline:none}
+.srch-res{margin:0 clamp(16px,10vw,220px);overflow-y:auto;padding-bottom:40px}
+.srch-hint{padding:22px 0;color:var(--gris-txt);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.sres{display:flex;justify-content:space-between;gap:2em;padding:15px 0;border-bottom:1px solid var(--gris-bord);font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+.sres:hover{color:var(--gris-txt)}
+.sres-price{color:var(--gris-txt)}
+
+/* Menu mobile */
+.mmenu{position:fixed;inset:0;background:var(--blanc);z-index:240;transform:translateX(-102%);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column}
+.mmenu.open{transform:none}
+.mmenu-head{display:flex;align-items:center;justify-content:space-between;padding:18px 4.5vw;height:var(--hdr-h);border-bottom:1px solid var(--gris-bord)}
+.mmenu-logo{font-family:var(--font-titre);font-weight:700;font-size:15px}
+.mmenu-links{flex:1;overflow-y:auto;padding:3vh 4.5vw}
+.mmenu-links a{display:block;font-family:var(--font-titre);font-weight:700;font-size:clamp(20px,6.5vw,30px);text-transform:uppercase;line-height:1.05;padding:3.2vh 0;border-bottom:1px solid var(--gris-bord)}
+.mmenu-foot{padding:3.5vh 4.5vw;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--gris-txt);line-height:2;border-top:1px solid var(--gris-bord)}
+
+/* Toast */
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,12px);background:var(--noir);color:#fff;padding:13px 24px;border-radius:9999px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:300;white-space:nowrap;max-width:92vw;overflow:hidden;text-overflow:ellipsis}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* Révélation au scroll */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ================= FOOTER ================= */
+.footer{border-top:1px solid var(--gris-bord);padding:clamp(32px,4.5vw,80px) var(--marge-d) clamp(20px,2.5vw,40px) var(--marge-g)}
+.footer-top{display:flex;justify-content:space-between;gap:4vw;flex-wrap:wrap}
+.footer-logo{font-family:var(--font-titre);font-weight:700;font-size:clamp(20px,2.6vw,40px);letter-spacing:.02em}
+.footer-cols{display:flex;gap:clamp(24px,6vw,110px);flex-wrap:wrap}
+.fcol h3{font-size:clamp(9px,.95vw,12px);letter-spacing:.14em;color:var(--gris-txt);font-weight:500;margin-bottom:1em;text-transform:uppercase}
+.fcol p,.fcol a{display:block;font-size:clamp(10px,1.05vw,13px);letter-spacing:.04em;line-height:1.9;text-transform:uppercase}
+.fcol a:hover{text-decoration:underline;text-underline-offset:3px}
+.fcol svg{width:14px;display:inline-block;vertical-align:-2px;margin-right:.5em}
+.footer-bottom{margin-top:clamp(28px,4vw,70px);padding-top:clamp(14px,1.6vw,24px);border-top:1px solid var(--gris-bord);display:flex;justify-content:space-between;gap:2vw;flex-wrap:wrap;font-size:clamp(9px,.95vw,12px);letter-spacing:.04em;text-transform:uppercase;color:var(--gris-txt)}
+.footer-bottom nav{display:flex;gap:2.5em}
+.footer-bottom a:hover{color:var(--noir)}
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+/* ================================================================
+   LA MAISON NOMADE — ABIDJAN · fichier unique
+   Structure (équivalent à config.js / components/ / pages/) :
+     1. CONFIG          → assets, produits, WhatsApp, infos
+     2. ICÔNES          → SVG traits fins 1px
+     3. ÉTAT + STOCKAGE → panier & favoris (localStorage)
+     4. COMPOSANTS      → header, footer, cartes, tiroirs…
+     5. PAGES           → accueil, catalogue, produit, marque…
+     6. ROUTEUR         → routes hash + rendu + interactions
+================================================================ */
+
+/* ============ 1. CONFIG — tout se modifie ici ============ */
+const ASSETS = {
+  HERO_VIDEO:    "vmais.mp4",   // vidéo du héros
+  HERO_POSTER:   "hero-poster.jpg", // image de secours si la vidéo manque
+  CAT_TSHIRTS:   "ta.png",      // photo moitié gauche (T-shirts)
+  CAT_ENSEMBLES: "e1.png",      // photo moitié droite (Ensembles)
+};
+const WHATSAPP = "2250500271313"; // numéro de commande WhatsApp
+
+const PRODUCTS = [
+  { slug:"tshirt-abidjan", name:"T-shirt Abidjan", category:"t-shirts", price:15000, image:"ta.png", video:"",
+    description:"T-shirt unisexe en coton peigné 220 g. Sérigraphie inspirée des grandes fresques du Plateau et du rythme de la lagune Ébrié. Coupe droite, col côtelé, édition Abidjan.",
+    sizes:["S","M","L","XL","XXL"] },
+  { slug:"tshirt-mansa", name:"T-shirt Mansa", category:"t-shirts", price:15000, image:"tm.png", video:"",
+    description:"Hommage aux empires du Sahel. Coton lourd 220 g, impression mate sur la poitrine, finitions renforcées. Une pièce sobre qui porte une histoire longue.",
+    sizes:["S","M","L","XL","XXL"] },
+  { slug:"tshirt-agodjie", name:"T-shirt Agodjié", category:"t-shirts", price:15000, image:"tc.png", video:"",
+    description:"Motifs géométriques inspirés des pagnes baoulé tissés. Édition limitée, sérigraphie réalisée à Abidjan. Chaque pièce porte le signe d'Agodjié.",
+    sizes:["S","M","L","XL","XXL"] },
+  { slug:"tshirt-timbre", name:"T-shirt Timbre", category:"t-shirts", price:15000, image:"tt.png", video:"",
+    description:"Estampe façon timbre postal — hommage aux quartiers d'Abidjan et à ceux qui voyagent sans jamais quitter leur ville. Coton peigné 220 g.",
+    sizes:["S","M","L","XL","XXL"] },
+  { slug:"ensemble-1", name:"Ensemble 1", category:"ensembles", price:25000, image:"e1.png", video:"",
+    description:"Ensemble deux pièces en wax premium. Haut structuré, pantalon à taille haute. Coupe ajustée, confection ivoirienne.",
+    sizes:["S","M","L","XL","XXL"] },
+  { slug:"ensemble-2", name:"Ensemble 2", category:"ensembles", price:28000, image:"e2.png", video:"",
+    description:"Ensemble deux pièces fluide, tissu wax peigné. Fentes latérales, ceinture amovible. Se porte ensemble ou séparé.",
+    sizes:["S","M","L","XL","XXL"] },
+  { slug:"ensemble-3", name:"Ensemble 3", category:"ensembles", price:30000, image:"", video:"", // image vide → fond gris automatique
+    description:"Ensemble deux pièces en toile coloniale repensée. Coupe droite, poches passepoilées, doublure coton.",
+    sizes:["S","M","L","XL","XXL"] },
+  { slug:"ensemble-4", name:"Ensemble 4", category:"ensembles", price:35000, image:"", video:"",
+    description:"Ensemble deux pièces de cérémonie. Broderies ton sur ton inspirées des signes syambou. Tirage très limité.",
+    sizes:["S","M","L","XL","XXL"] },
+];
+
+// Pages service client (menu CLIENTS + footer)
+const INFO = {
+  livraison:{ t:"Livraison", body:`<p>Livraison à Abidjan sous 24 à 48 h (Cocody, Plateau, Marcory, Yopougon, Bingerville…). Intérieur du pays sous 3 à 5 jours ouvrés.</p><p>Retrait possible directement à la maison : Angré CHU, Station Oryx, Abidjan.</p><p>Paiement à la livraison accepté sur Abidjan. Pour toute commande, passez par le bouton WhatsApp du panier.</p>` },
+  retours:{ t:"Retours", body:`<p>Échange possible sous 7 jours, article non porté, étiquette d'origine intacte.</p><p>Les pièces en édition limitée ne sont ni reprises ni remboursées — uniquement échangées selon les stocks disponibles.</p><p>Pour lancer un échange, écrivez-nous directement sur WhatsApp au +225 05 00 27 13 13.</p>` },
+  tailles:{ t:"Guide des tailles", body:`<table class="ttable"><thead><tr><th>Taille</th><th>Poitrine (cm)</th><th>Longueur (cm)</th></tr></thead><tbody><tr><td>S</td><td>96</td><td>68</td></tr><tr><td>M</td><td>102</td><td>70</td></tr><tr><td>L</td><td>108</td><td>72</td></tr><tr><td>XL</td><td>114</td><td>74</td></tr><tr><td>XXL</td><td>120</td><td>76</td></tr></tbody></table><p class="tnote">Coupes unisexes — entre deux tailles, prenez la plus grande.</p>` },
+};
+
+/* ============ 2. ICÔNES SVG (traits fins 1px) ============ */
+const I = {
+  search:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>`,
+  heart:f=>`<svg viewBox="0 0 24 24" fill="${f?'currentColor':'none'}" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M12 20.5C7 16.5 3.5 13.2 3.5 9.6 3.5 7 5.5 5 8 5c1.6 0 3.1.9 4 2.2C12.9 5.9 14.4 5 16 5c2.5 0 4.5 2 4.5 4.6 0 3.6-3.5 6.9-8.5 10.9z"/></svg>`,
+  bag:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M5.5 8.5h13l-.9 11a1.5 1.5 0 0 1-1.5 1.4H7.9a1.5 1.5 0 0 1-1.5-1.4z"/><path d="M9 8.5V7a3 3 0 0 1 6 0v1.5"/></svg>`,
+  chevR:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M9 4.5 16.5 12 9 19.5"/></svg>`,
+  chevL:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M15 4.5 7.5 12 15 19.5"/></svg>`,
+  chevDown:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg>`,
+  close:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg>`,
+  burger:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M3 8h18M3 15h18"/></svg>`,
+  play:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M8.5 5.5v13l10-6.5z"/></svg>`,
+  ig:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="3.8"/><circle cx="17.1" cy="6.9" r=".9" fill="currentColor" stroke="none"/></svg>`,
+  wa:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 0 0-7.3 12.8L3.5 20.5l4.3-1.1A8.5 8.5 0 1 0 12 3.5z"/><path d="M9.3 8.2c.2-.5.5-.5.8-.5h.6c.2 0 .4 0 .6.5l.7 1.6c.1.3 0 .5-.2.7l-.5.5c.6 1.2 1.5 2.1 2.7 2.7l.5-.5c.2-.2.4-.3.7-.2l1.6.7c.4.2.5.4.5.6v.6c0 .4-.1.7-.5.9-.5.3-1.2.5-2 .3-2.5-.6-4.9-3-5.5-5.5-.2-.8 0-1.5.3-2z"/></svg>`,
+};
+
+/* ============ 3. ÉTAT + STOCKAGE ============ */
+const store = { cart:load("lmn_cart_v1",[]), favs:load("lmn_favs_v1",[]) };
+const state = { ui:{} };
+let pdpState = { size:null, qty:1 }, currentSlug = null, toastTimer = null;
+
+function load(k,fb){ try{ return JSON.parse(localStorage.getItem(k)) ?? fb; }catch(e){ return fb; } }
+function persist(){ try{ localStorage.setItem("lmn_cart_v1",JSON.stringify(store.cart)); localStorage.setItem("lmn_favs_v1",JSON.stringify(store.favs)); }catch(e){} }
+
+/* Petits utilitaires */
+const qs=(s,r=document)=>r.querySelector(s), qsA=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,"\u00A0");
+const bySlug=s=>PRODUCTS.find(p=>p.slug===s);
+const byCat=c=>PRODUCTS.filter(p=>p.category===c);
+const cartCount=()=>store.cart.reduce((s,i)=>s+i.qty,0);
+const cartTotal=()=>store.cart.reduce((s,i)=>s+bySlug(i.slug).price*i.qty,0);
+
+/* Images manquantes → le fond gris du conteneur reste visible, jamais d'icône cassée.
+   Vidéo manquante → on cache la <video>, l'image poster placée derrière prend le relais. */
+document.addEventListener("error",e=>{ const t=e.target; if(t.tagName==="IMG"||t.tagName==="VIDEO") t.style.display="none"; },true);
+
+/* ============ 4. COMPOSANTS ============ */
+function Header(parts){
+  const p0=parts[0]||"", p1=parts[1]||"";
+  return `<header class="hdr">
+    <button class="hdr-burger" data-act="open-menu" aria-label="Ouvrir le menu">${I.burger}</button>
+    <a class="hdr-logo" href="#/">NOMADE</a>
+    <nav class="hdr-nav" aria-label="Navigation principale">
+      <a class="nav-cell" href="#/catalogue"><span class="nav-link">Catalogue</span></a>
+      <a class="nav-cell" href="#/la-marque"><span class="nav-link">La marque</span></a>
+      <div class="nav-cell nav-drop" style="width:10vw">
+        <button class="nav-drop-btn" data-act="drop" aria-haspopup="true">Clients ${I.chevDown}</button>
+        <div class="drop">
+          <a href="#/service/livraison">Livraison</a>
+          <a href="#/service/retours">Retours</a>
+          <a href="#/service/tailles">Guide des tailles</a>
+        </div>
+      </div>
+      <a class="nav-cell" href="#/contact"><span class="nav-link">Contact</span></a>
+    </nav>
+    <div class="hdr-search" title="Rechercher un produit">
+      ${I.search}
+      <input id="hdrSearch" type="search" placeholder="Rechercher un produit" aria-label="Rechercher un produit" autocomplete="off">
+    </div>
+    <span class="hdr-vsep" aria-hidden="true"></span>
+    <button class="hdr-heart" data-act="open-favs" aria-label="Mes favoris">${I.heart(false)}<span class="dot"></span></button>
+    <button class="hdr-cart" data-act="open-cart" aria-label="Ouvrir le panier">
+      <span class="cart-ic">${I.bag}<span class="cart-count">${cartCount()}</span></span>
+    </button>
+  </header>`;
+}
+
+function Footer(){
+  return `<footer class="footer">
+    <div class="footer-top">
+      <a class="footer-logo" href="#/">NOMADE</a>
+      <div class="footer-cols">
+        <div class="fcol">
+          <h3>La maison</h3>
+          <p>Angré CHU, Station Oryx<br>Abidjan — Côte d'Ivoire</p>
+        </div>
+        <div class="fcol">
+          <h3>Contact</h3>
+          <a href="tel:+2250500271313">+225 05 00 27 13 13</a>
+          <a href="https://wa.me/${WHATSAPP}" target="_blank" rel="noopener">${I.wa}WhatsApp</a>
+        </div>
+        <div class="fcol">
+          <h3>Suivre</h3>
+          <a href="https://instagram.com/la_maison_nomade_abidjan" target="_blank" rel="noopener">${I.ig}@la_maison_nomade_abidjan</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 La Maison Nomade</span>
+      <nav aria-label="Liens service">
+        <a href="#/service/livraison">Livraison</a>
+        <a href="#/service/retours">Retours</a>
+        <a href="#/service/tailles">Guide des tailles</a>
+      </nav>
+    </div>
+  </footer>`;
+}
+
+function HeroHTML(){
+  return `<section class="hero" aria-label="La Maison Nomade — Abidjan">
+    <img class="hero-poster" src="${ASSETS.HERO_POSTER}" alt="" aria-hidden="true">
+    <video ${ASSETS.HERO_VIDEO?`src="${ASSETS.HERO_VIDEO}"`:""} poster="${ASSETS.HERO_POSTER}" autoplay muted loop playsinline preload="auto"></video>
+    <div class="hero-shade" aria-hidden="true"></div>
+    <h1 class="hero-title"><span class="l1">Nomade</span><span class="l2">Abidjan</span></h1>
+    <p class="hero-sub">Marque de vêtements inspirée de l'héritage africain<br>Bienvenue chez les Nomades</p>
+    <a class="pill pill-solid pill-lg hero-cta" href="#/catalogue">Au catalogue</a>
+  </section>`;
+}
+
+function CatsHTML(){
+  // Listes dérivées de la config : jamais de texte en dur dans le composant
+  const left=[{label:"T-Shirts",href:"#/catalogue/t-shirts",strong:true},
+    ...byCat("t-shirts").map(p=>({label:p.name.replace(/^T-shirt\s+/i,""),href:"#/produit/"+p.slug}))];
+  const right=[{label:"Ensembles",href:"#/catalogue/ensembles",strong:true},
+    ...byCat("ensembles").map(p=>({label:p.name.replace(/^Ensemble\s+/i,"Ensemble "),href:"#/produit/"+p.slug}))];
+  const li=items=>items.map(i=>`<li><a class="${i.strong?"strong":""}" href="${i.href}">${esc(i.label)}</a></li>`).join("");
+  return `<section class="cats" aria-label="Catégories">
+    <div class="cat cat-left">
+      <img src="${ASSETS.CAT_TSHIRTS}" alt="Catégorie T-shirts — gros plan sur l'impression dos">
+      <a class="cat-cover" href="#/catalogue/t-shirts" aria-label="Voir les T-shirts"></a>
+      <ul class="cat-list cat-list-left">${li(left)}</ul>
+    </div>
+    <div class="cat cat-right">
+      <img src="${ASSETS.CAT_ENSEMBLES}" alt="Catégorie Ensembles — portrait en pied">
+      <a class="cat-cover" href="#/catalogue/ensembles" aria-label="Voir les ensembles"></a>
+      <ul class="cat-list cat-list-right">${li(right)}</ul>
+    </div>
+    <div class="cats-title reveal">
+      <h2>Collection Nomade</h2>
+      <span>2026</span>
+    </div>
+  </section>`;
+}
+
+function ProductCard(p){
+  return `<a class="pcard reveal" href="#/produit/${p.slug}">
+    <div class="pcard-img"><img src="${p.image}" alt="${esc(p.name)}" loading="lazy"></div>
+    <div class="pcard-meta"><span class="pcard-name">${esc(p.name)}</span><span class="pcard-price">${fmt(p.price)} FCFA</span></div>
+  </a>`;
+}
+
+/* ---- Tiroirs panier / favoris ---- */
+function waMessage(){
+  const lines=store.cart.map(it=>{const p=bySlug(it.slug);return `• ${p.name.toUpperCase()} — taille ${it.size} × ${it.qty} — ${fmt(p.price*it.qty)} FCFA`;});
+  return `Bonjour LA MAISON NOMADE,\n\nJe souhaite commander :\n\n${lines.join("\n")}\n\nTOTAL : ${fmt(cartTotal())} FCFA\n\nNom :\nAdresse de livraison :`;
+}
+function cartDrawerHTML(){
+  const rows=store.cart.map((it,i)=>{const p=bySlug(it.slug);if(!p)return"";return `
+    <div class="citem">
+      <a class="citem-img" href="#/produit/${p.slug}"><img src="${p.image}" alt="${esc(p.name)}"></a>
+      <div class="citem-info">
+        <p class="citem-name">${esc(p.name)}</p>
+        <p class="citem-size">Taille ${esc(it.size)} · ${fmt(p.price)} FCFA</p>
+        <div class="citem-qty">
+          <button data-act="c-minus" data-i="${i}" aria-label="Diminuer la quantité">−</button>
+          <span>${it.qty}</span>
+          <button data-act="c-plus" data-i="${i}" aria-label="Augmenter la quantité">+</button>
+        </div>
+      </div>
+      <div class="citem-right">
+        <button class="citem-del" data-act="c-del" data-i="${i}" aria-label="Retirer l'article">${I.close}</button>
+        <span class="citem-price">${fmt(p.price*it.qty)} FCFA</span>
+      </div>
+    </div>`;}).join("");
+  const has=store.cart.length>0;
+  return `<aside class="drawer" role="dialog" aria-label="Panier">
+    <div class="drawer-head"><h2>Panier (${cartCount()})</h2><button class="icon-btn" data-act="close-ui" aria-label="Fermer le panier">${I.close}</button></div>
+    <div class="drawer-body">${rows||`<p class="empty">Votre panier est vide</p>`}</div>
+    ${has?`<div class="drawer-foot">
+      <div class="d-total"><span>Sous-total</span><span>${fmt(cartTotal())} FCFA</span></div>
+      <a class="pill pill-solid d-wa" target="_blank" rel="noopener" href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent(waMessage())}">${I.wa}Commander sur WhatsApp</a>
+      <p class="d-note">Paiement à la livraison · Redirection WhatsApp</p>
+    </div>`:`<div class="drawer-foot"><a class="pill pill-outline d-wa" href="#/catalogue" data-act="close-ui">Voir le catalogue</a></div>`}
+  </aside>`;
+}
+function favDrawerHTML(){
+  const rows=store.favs.map(s=>{const p=bySlug(s);if(!p)return"";return `
+    <div class="citem">
+      <a class="citem-img" href="#/produit/${p.slug}"><img src="${p.image}" alt="${esc(p.name)}"></a>
+      <div class="citem-info">
+        <p class="citem-name">${esc(p.name)}</p>
+        <p class="citem-size">${fmt(p.price)} FCFA</p>
+        <a class="pill pill-outline" style="margin-top:12px;height:34px;padding:0 1.4em;font-size:10px" href="#/produit/${p.slug}" data-act="close-ui">Voir le produit</a>
+      </div>
+      <div class="citem-right">
+        <button class="citem-del" data-act="f-del" data-slug="${p.slug}" aria-label="Retirer des favoris">${I.close}</button>
+      </div>
+    </div>`;}).join("");
+  return `<aside class="drawer" role="dialog" aria-label="Favoris">
+    <div class="drawer-head"><h2>Favoris (${store.favs.length})</h2><button class="icon-btn" data-act="close-ui" aria-label="Fermer">${I.close}</button></div>
+    <div class="drawer-body">${rows||`<p class="empty">Aucun favori pour l'instant</p><p class="fav-hint">Ajoutez des coups de cœur depuis chaque page produit, avec le cœur à côté du nom.</p>`}</div>
+  </aside>`;
+}
+function searchOverlayHTML(){
+  return `<div class="srch" role="dialog" aria-label="Recherche">
+    <div class="srch-head"><span class="srch-logo">NOMADE</span><button class="icon-btn" data-act="close-ui" aria-label="Fermer la recherche">${I.close}</button></div>
+    <div class="srch-box">${I.search}<input id="srchInput" type="search" placeholder="Rechercher un produit…" autocomplete="off" aria-label="Rechercher un produit"></div>
+    <div class="srch-res" id="srchRes"><p class="srch-hint">Tapez pour rechercher parmi les produits — Entrée pour voir le catalogue.</p></div>
+  </div>`;
+}
+function mobileMenuHTML(){
+  return `<div class="mmenu" role="dialog" aria-label="Menu">
+    <div class="mmenu-head"><span class="mmenu-logo">NOMADE</span><button class="icon-btn" data-act="close-ui" aria-label="Fermer le menu">${I.close}</button></div>
+    <nav class="mmenu-links">
+      <a href="#/catalogue">Catalogue</a>
+      <a href="#/la-marque">La marque</a>
+      <a href="#/service/livraison">Livraison</a>
+      <a href="#/service/retours">Retours</a>
+      <a href="#/service/tailles">Guide des tailles</a>
+      <a href="#/contact">Contact</a>
+    </nav>
+    <div class="mmenu-foot">Angré CHU, Station Oryx, Abidjan<br>+225 05 00 27 13 13</div>
+  </div>`;
+}
+
+function renderOverlays(){
+  const o=qs("#overlays"); if(!o) return;
+  const anim=state.ui.anim; if(state.ui.anim) state.ui.anim=false;
+  const on=k=>state.ui[k]?(anim?"":" open"):"";
+  let h=`<div class="overlay${(state.ui.cart||state.ui.favs)?" open":""}" data-act="close-ui"></div>`;
+  if(state.ui.cart) h+=cartDrawerHTML();
+  if(state.ui.favs) h+=favDrawerHTML();
+  if(state.ui.search) h+=searchOverlayHTML();
+  if(state.ui.menu) h+=mobileMenuHTML();
+  h+=`<div class="toast" id="toast" role="status" aria-live="polite"></div>`;
+  o.innerHTML=h;
+  wireOverlays();
+  if(anim){ requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    qsA(".drawer,.srch,.mmenu",o).forEach(el=>el.classList.add("open"));
+  })); }
+}
+function openUI(kind){ state.ui={[kind]:true,anim:true}; renderOverlays(); if(kind==="search") setTimeout(()=>qs("#srchInput")?.focus(),380); }
+function closeUI(){ qsA(".drawer.open,.srch.open,.mmenu.open").forEach(el=>el.classList.remove("open")); qs(".overlay.open")?.classList.remove("open"); setTimeout(()=>{ state.ui={}; const o=qs("#overlays"); if(o) renderOverlays(); },380); }
+
+/* ============ 5. PAGES ============ */
+function HomePage(){
+  const best=PRODUCTS.slice(0,4); // 4 best-sellers, ordre du config
+  return `${HeroHTML()}
+  ${CatsHTML()}
+  <section class="bs" aria-label="Best-sellers">
+    <div class="bs-head reveal">
+      <h2>Best-sellers</h2>
+      <a class="pill pill-outline pill-lg" href="#/catalogue">Au catalogue</a>
+    </div>
+    <div class="bs-wrap">
+      <button class="bs-arrow bs-prev" data-act="bs-prev" aria-label="Produits précédents">${I.chevL}</button>
+      <div class="bs-track">${best.map(ProductCard).join("")}</div>
+      <button class="bs-arrow bs-next" data-act="bs-next" aria-label="Produits suivants">${I.chevR}</button>
+    </div>
+  </section>`;
+}
+
+function CataloguePage(cat,params){
+  const q=(params.get("q")||"").trim(), ql=q.toLowerCase();
+  const sort=params.get("sort")||"new";
+  let list=PRODUCTS.filter(p=>cat==="all"||p.category===cat);
+  if(ql) list=list.filter(p=>p.name.toLowerCase().includes(ql)||p.category.includes(ql));
+  if(sort==="price-asc") list=[...list].sort((a,b)=>a.price-b.price);
+  if(sort==="price-desc") list=[...list].sort((a,b)=>b.price-a.price);
+  const base=cat==="all"?"#/catalogue":"#/catalogue/"+cat;
+  const title=cat==="all"?"Catalogue":cat==="t-shirts"?"T-shirts":"Ensembles";
+  const srt=(k,label)=>`<a class="tab ${sort===k?"on":""}" href="${base}?sort=${k}${q?`&q=${encodeURIComponent(q)}`:""}">${label}</a>`;
+  const tabs=cat!=="all"?``:`<nav class="tabs" aria-label="Filtrer par catégorie">
+    <a class="tab on" href="#/catalogue${sort!=="new"?`?sort=${sort}`:""}">Tout</a>
+    <a class="tab" href="#/catalogue/t-shirts${sort!=="new"?`?sort=${sort}`:""}">T-shirts</a>
+    <a class="tab" href="#/catalogue/ensembles${sort!=="new"?`?sort=${sort}`:""}">Ensembles</a>
+  </nav>`;
+  return `<section class="page">
+    <div class="chead">
+      ${cat!=="all"?`<p class="crumb"><a href="#/catalogue">Catalogue</a> — ${title}</p>`:``}
+      <h1 class="reveal">${title}</h1>
+      ${q?`<div class="qchip">Recherche — « ${esc(q)} » · ${list.length} résultat${list.length>1?"s":""}
+        <button data-act="clear-q" aria-label="Effacer la recherche">${I.close}</button></div>`:``}
+      <div class="chead-row">${tabs}<nav class="sorter" aria-label="Trier">${srt("new","Nouveautés")}${srt("price-asc","Prix ↑")}${srt("price-desc","Prix ↓")}</nav></div>
+    </div>
+    <div class="grid">${list.map(ProductCard).join("")||`<p class="gempty">Aucun produit</p>`}</div>
+  </section>`;
+}
+
+function ProductPage(slug){
+  const p=bySlug(slug);
+  if(!p) return NotFoundPage();
+  currentSlug=slug; pdpState={size:null,qty:1};
+  const medias=[{type:"img",src:p.image}].concat(p.video?[{type:"video",src:p.video}]:[]);
+  const isFav=store.favs.includes(slug);
+  return `<section class="pdp">
+    <div class="pdp-gallery">
+      <div class="pdp-main" id="pdpMain"><img src="${p.image}" alt="${esc(p.name)}"></div>
+      ${medias.length>1?`<div class="pdp-thumbs">${medias.map((m,i)=>`
+        <button class="pdp-thumb ${i===0?"active":""}" data-act="thumb" data-i="${i}" aria-label="${m.type==="video"?"Voir la vidéo":"Voir la photo"}">
+          <img src="${p.image}" alt=""><span class="tplay">${m.type==="video"?I.play:""}</span>
+        </button>`).join("")}</div>`:``}
+    </div>
+    <div class="pdp-info">
+      <div class="pdp-titlerow">
+        <h1>${esc(p.name)}</h1>
+        <button class="pdp-fav ${isFav?"has":""}" data-act="pdp-fav" aria-label="Ajouter aux favoris">${I.heart(isFav)}</button>
+      </div>
+      <p class="pdp-price">${fmt(p.price)} FCFA</p>
+      <p class="pdp-desc">${esc(p.description)}</p>
+      <p class="pdp-label">Taille</p>
+      <div class="pdp-sizes" id="pdpSizes">${p.sizes.map(s=>`<button class="size" data-act="size" data-size="${s}">${s}</button>`).join("")}</div>
+      <div class="pdp-row">
+        <div class="qty">
+          <button data-act="q-minus" aria-label="Diminuer la quantité">−</button>
+          <span id="qVal">1</span>
+          <button data-act="q-plus" aria-label="Augmenter la quantité">+</button>
+        </div>
+        <button class="pill pill-solid pdp-add" data-act="add">Ajouter au panier</button>
+      </div>
+      <p class="pdp-note">Livraison Abidjan 24–48 h · <a href="#/service/livraison">Détails livraison</a></p>
+    </div>
+  </section>`;
+}
+
+function BrandPage(){
+  return `<section class="page">
+    <p class="crumb">La maison</p>
+    <h1 class="brand-giant reveal">Porter l'héritage,<br>habiter le monde.</h1>
+    <p class="brand-lede reveal"><strong>LA MAISON NOMADE</strong> est une marque de vêtements née à <strong>Abidjan</strong>, inspirée de l'héritage africain. Nous traduisons la mémoire des motifs — pagnes tissés, signes, timbres, symboles — dans des pièces coupées pour la ville d'aujourd'hui. Des vêtements qui voyagent. Bienvenue chez les Nomades.</p>
+    <div class="brand-lines">
+      <div class="bline reveal"><span class="bnum">01</span><h3>Héritage</h3><p>Chaque collection commence par un motif : pagne baoulé, tissu wax, estampe de timbre. Nous le traduisons en sérigraphie, sans jamais le dénaturer — le signe reste lisible, la coupe reste moderne.</p></div>
+      <div class="bline reveal"><span class="bnum">02</span><h3>Savoir-faire</h3><p>Coton lourd 220 g, tirages limités, impression et finitions réalisées à Abidjan. Des vêtements pensés pour durer, se laver souvent et se transmettre parfois.</p></div>
+      <div class="bline reveal"><span class="bnum">03</span><h3>Communauté</h3><p>Les Nomades, c'est vous : d'Angré à Cocody, de Paris à Accra. La maison n'est pas une adresse fixe — c'est une manière d'habiter le monde, avec ses signes sur le dos.</p></div>
+    </div>
+    <a class="pill pill-solid pill-lg brand-cta" href="#/catalogue">Au catalogue</a>
+  </section>`;
+}
+
+function ServicePage(key){
+  const info=INFO[key];
+  if(!info) return NotFoundPage();
+  return `<section class="page svc-body">
+    <p class="crumb"><a href="#/">Accueil</a> — Service client</p>
+    <h1 class="chead" style="margin-bottom:0"><span style="font-family:var(--font-titre);font-weight:700;font-size:clamp(26px,4.5vw,72px);line-height:1.05;text-transform:uppercase">${info.t}</span></h1>
+    <div class="reveal" style="margin-top:clamp(20px,2.6vw,44px)">${info.body}</div>
+    <a class="pill pill-solid pill-lg" href="https://wa.me/${WHATSAPP}" target="_blank" rel="noopener">${I.wa}Une question ? WhatsApp</a>
+  </section>`;
+}
+
+function ContactPage(){
+  return `<section class="page">
+    <p class="crumb">Nous écrire</p>
+    <h1 class="brand-giant reveal">Parlons-en.</h1>
+    <div class="contact-list reveal">
+      <div class="fcol">
+        <h3>La maison</h3>
+        <p>Angré CHU, Station Oryx<br>Abidjan — Côte d'Ivoire<br>Lun–Sam · 9h–19h</p>
+      </div>
+      <div class="fcol">
+        <h3>Téléphone</h3>
+        <a href="tel:+2250500271313">+225 05 00 27 13 13</a>
+        <p style="color:var(--gris-txt)">Appel & WhatsApp</p>
+      </div>
+      <div class="fcol">
+        <h3>Réseaux</h3>
+        <a href="https://instagram.com/la_maison_nomade_abidjan" target="_blank" rel="noopener">${I.ig}@la_maison_nomade_abidjan</a>
+        <a href="https://wa.me/${WHATSAPP}" target="_blank" rel="noopener">${I.wa}WhatsApp direct</a>
+      </div>
+    </div>
+    <a class="pill pill-solid pill-lg" href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Bonjour LA MAISON NOMADE,")}" target="_blank" rel="noopener">${I.wa}Écrire sur WhatsApp</a>
+  </section>`;
+}
+
+function NotFoundPage(){
+  return `<section class="page" style="min-height:50vh">
+    <h1 class="brand-giant">Introuvable.</h1>
+    <p class="brand-lede">Cette page a voyagé un peu trop loin. <a href="#/catalogue" style="text-decoration:underline">Retour au catalogue</a>.</p>
+  </section>`;
+}
+
+/* ============ 6. ROUTEUR + INTERACTIONS ============ */
+function parseHash(){
+  const h=location.hash.replace(/^#/,"")||"/";
+  const [pathStr,queryStr]=h.split("?");
+  const parts=pathStr.split("/").filter(Boolean);
+  return { parts, params:new URLSearchParams(queryStr||"") };
+}
+
+function routeView(parts,params){
+  const [a,b]=parts;
+  if(!a) return { html:HomePage(), title:"Accueil" };
+  if(a==="catalogue"&&!b) return { html:CataloguePage("all",params), title:"Catalogue" };
+  if(a==="catalogue"&&(b==="t-shirts"||b==="ensembles")) return { html:CataloguePage(b,params), title:b==="t-shirts"?"T-shirts":"Ensembles" };
+  if(a==="produit"&&b) return { html:ProductPage(b), title:bySlug(b)?bySlug(b).name:"Produit" };
+  if(a==="la-marque") return { html:BrandPage(), title:"La marque" };
+  if(a==="service"&&b) return { html:ServicePage(b), title:INFO[b]?INFO[b].t:"Service" };
+  if(a==="contact") return { html:ContactPage(), title:"Contact" };
+  return { html:NotFoundPage(), title:"Introuvable" };
+}
+
+let io=null;
+function observeReveals(){
+  if(io) io.disconnect();
+  io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }),{threshold:.12});
+  qsA(".reveal").forEach(el=>io.observe(el));
+}
+
+function toast(msg){
+  const t=qs("#toast"); if(!t) return;
+  t.textContent=msg; t.classList.add("show");
+  clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove("show"),2400);
+}
+
+function updateBadges(){
+  const cc=qs(".cart-count");
+  if(cc){ const n=cartCount(); cc.textContent=n; cc.style.display=n?"flex":"none";
+    cc.classList.remove("pop"); void cc.offsetWidth; if(n) cc.classList.add("pop"); }
+  qs(".hdr-heart")?.classList.toggle("has",store.favs.length>0);
+}
+
+function addToCart(slug,size,qty){
+  const ex=store.cart.find(i=>i.slug===slug&&i.size===size);
+  if(ex) ex.qty=Math.min(99,ex.qty+qty); else store.cart.push({slug,size,qty});
+  persist(); renderOverlays(); updateBadges();
+  toast(`Ajouté au panier — ${bySlug(slug).name} (${size})`);
+}
+function toggleFav(slug){
+  const i=store.favs.indexOf(slug);
+  if(i>=0){ store.favs.splice(i,1); toast("Retiré des favoris"); }
+  else { store.favs.push(slug); toast("Ajouté aux favoris"); }
+  persist(); updateBadges();
+  qs(".pdp-fav")?.classList.toggle("has",store.favs.includes(slug));
+  const fb=qs(".pdp-fav"); if(fb) fb.innerHTML=I.heart(store.favs.includes(slug));
+}
+
+/* Carrousel best-sellers : défilement d'une carte par clic */
+function wireCarousel(){
+  const track=qs(".bs-track"); if(!track) return;
+  const step=()=>{ const c=track.querySelector(".pcard"); if(!c) return 220;
+    return c.getBoundingClientRect().width+(parseFloat(getComputedStyle(track).columnGap)||0); };
+  const upd=()=>{ const max=track.scrollWidth-track.clientWidth-1;
+    qs(".bs-prev")?.classList.toggle("dim",track.scrollLeft<=1);
+    qs(".bs-next")?.classList.toggle("dim",track.scrollLeft>=max); };
+  qs("[data-act='bs-prev']")?.addEventListener("click",()=>track.scrollBy({left:-step(),behavior:"smooth"}));
+  qs("[data-act='bs-next']")?.addEventListener("click",()=>track.scrollBy({left:step(),behavior:"smooth"}));
+  track.addEventListener("scroll",upd,{passive:true});
+  window.addEventListener("resize",upd); upd();
+}
+
+function setPdpMedia(i){
+  const p=bySlug(currentSlug); if(!p) return;
+  const medias=[{type:"img",src:p.image}].concat(p.video?[{type:"video",src:p.video}]:[]);
+  const m=medias[i]; if(!m) return;
+  qs("#pdpMain").innerHTML=m.type==="video"
+    ?`<video src="${m.src}" autoplay muted loop playsinline></video>`
+    :`<img src="${m.src}" alt="${esc(p.name)}">`;
+  qsA(".pdp-thumb").forEach((b,bi)=>b.classList.toggle("active",bi===i));
+}
+
+/* Dispatcher global des actions (délégation d'événements) */
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-act]");
+  if(!e.target.closest(".nav-drop")) qs(".nav-drop.open")?.classList.remove("open");
+  if(!t) return;
+  const act=t.dataset.act;
+  switch(act){
+    case "open-cart": e.preventDefault(); openUI("cart"); break;
+    case "open-favs": e.preventDefault(); openUI("favs"); break;
+    case "open-menu": openUI("menu"); break;
+    case "close-ui": e.preventDefault(); closeUI(); break;
+    case "drop": e.preventDefault(); t.closest(".nav-drop").classList.toggle("open"); break;
+    case "clear-q": location.hash="#/catalogue"; break;
+    case "size":{ qsA(".size").forEach(b=>b.classList.remove("sel")); t.classList.add("sel"); pdpState.size=t.dataset.size; break; }
+    case "thumb": setPdpMedia(+t.dataset.i); break;
+    case "q-plus": pdpState.qty=Math.min(99,pdpState.qty+1); qs("#qVal").textContent=pdpState.qty; break;
+    case "q-minus": pdpState.qty=Math.max(1,pdpState.qty-1); qs("#qVal").textContent=pdpState.qty; break;
+    case "add":{ const p=bySlug(currentSlug); if(!pdpState.size){
+        toast("Choisissez d'abord une taille");
+        const s=qs(".pdp-sizes"); s.classList.remove("flash"); void s.offsetWidth; s.classList.add("flash");
+      } else addToCart(currentSlug,pdpState.size,pdpState.qty); break; }
+    case "pdp-fav": toggleFav(currentSlug); break;
+    case "c-plus":{ const it=store.cart[+t.dataset.i]; if(it){ it.qty=Math.min(99,it.qty+1); persist(); renderOverlays(); updateBadges(); } break; }
+    case "c-minus":{ const it=store.cart[+t.dataset.i]; if(it){ it.qty--; if(it.qty<=0) store.cart.splice(+t.dataset.i,1); persist(); renderOverlays(); updateBadges(); } break; }
+    case "c-del": store.cart.splice(+t.dataset.i,1); persist(); renderOverlays(); updateBadges(); break;
+    case "f-del":{ const i=store.favs.indexOf(t.dataset.slug); if(i>=0){ store.favs.splice(i,1); persist(); renderOverlays(); updateBadges(); } break; }
+  }
+});
+
+function wireOverlays(){
+  const si=qs("#srchInput"); if(!si) return;
+  const render=q=>{
+    ql=q.trim().toLowerCase();
+    const list=!ql?[]:PRODUCTS.filter(p=>p.name.toLowerCase().includes(ql)||p.category.includes(ql));
+    qs("#srchRes").innerHTML=!ql?`<p class="srch-hint">Tapez pour rechercher parmi les produits — Entrée pour voir le catalogue.</p>`
+      :list.length?list.map(p=>`<a class="sres" href="#/produit/${p.slug}"><span>${esc(p.name)}</span><span class="sres-price">${fmt(p.price)} FCFA</span></a>`).join("")
+      :`<p class="srch-hint">Aucun résultat pour « ${esc(q)} ».</p>`;
+  };
+  si.addEventListener("input",()=>render(si.value));
+  si.addEventListener("keydown",e=>{ if(e.key==="Enter"&&si.value.trim()) location.hash="#/catalogue?q="+encodeURIComponent(si.value.trim()); });
+  setTimeout(()=>si.focus(),380);
+}
+
+function renderApp(){
+  const {parts,params}=parseHash();
+  const view=routeView(parts,params);
+  const app=qs("#app");
+  app.innerHTML=`<a class="skip" href="#main">Aller au contenu</a>${Header(parts)}<main id="main">${view.html}</main>${Footer()}<div id="overlays"></div>`;
+  renderOverlays(); updateBadges(); observeReveals();
+  // Recherche inline du header (desktop) : Entrée → catalogue filtré
+  const hs=qs("#hdrSearch");
+  hs?.addEventListener("keydown",e=>{ if(e.key==="Enter"&&hs.value.trim()) location.hash="#/catalogue?q="+encodeURIComponent(hs.value.trim()); });
+  if(parts[0]!=="produit") currentSlug=null;
+  if(parts[0]==="catalogue") wireCarousel();
+  window.scrollTo(0,0);
+  document.title=view.title==="Accueil"?"LA MAISON NOMADE — ABIDJAN":`LA MAISON NOMADE — ABIDJAN · ${view.title}`;
+}
+
+window.addEventListener("hashchange",()=>{ state.ui={}; renderApp(); });
+renderApp();
+</script>
+</body>
+</html>
